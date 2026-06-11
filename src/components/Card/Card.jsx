@@ -1,10 +1,13 @@
 import styles from "./card.module.css"
 
-function Card ({text}){
+function Card ({nome = 'nenhum', curso = 'nenhum'}){
     return (
     <>
     <card className={styles.card}>
-        {text}
+        <img className={styles.cardImage} src="https://placehold.co/400" alt="foto de perfil"/>
+        <h2 className={styles.cardTitle}>Nome: {nome}</h2>
+        <p className={styles.cardText}>Curso: {curso}</p>
+        
     </card>
     </>
     )
