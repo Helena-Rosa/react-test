@@ -43,15 +43,15 @@ function App() {
   <MsgUsuario autenticado = {true} nomeUsuario={'SENAI'}/>
  */}
 
- <UseStateHook />
- <Contador />
+ {/* <UseStateHook /> */}
+ <Contador/>
  
 
   
 
   </>
 
-  )
+  );
 }
 
  export default App
