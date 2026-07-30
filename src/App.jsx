@@ -4,6 +4,7 @@ import Card from './components/Card/Card';
 import MsgUsuario from './components/MensagemUsuario/MsgUsuario';
 import UseEffectHook from './components/UseEffectHook/UseEffectHook';
 import Contador from './components/Contador/Contador';
+import Tema from './components/Tema/Tema';
 
 function App() {
   // const objeto = 
@@ -43,7 +44,7 @@ function App() {
   <MsgUsuario autenticado = {true} nomeUsuario={'SENAI'}/>
  */}
 
-  <UseEffectHook /> 
+ 
 
   <Tema/>
  

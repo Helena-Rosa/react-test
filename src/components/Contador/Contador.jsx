@@ -1,11 +1,33 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styles from "./Contador.module.css"
-function Contador() {
-    const [contador, setContador] = useState(0);
-   
+function ContadorAuto() {
+    const [automatico, setAutomatico] = useState(false);
 
+useEffect(() => {
+    let relogio;
+
+    if (automatico) {
+
+        relogio = setInterval (() =>{
+
+            setContador ((valorAtual) => valorAtual + 1);
+        }, 1000)
+    }
+
+
+    return () => clearInterval(relogio);
+
+}, [automatico]);
+
+
+const alternarAutomatico = () =>{
+    setAutomatico(!automatico);
+
+
+}
     const reiniciar= () =>{
             setContador(0);
+            setAutomatico(false);
 
         }
 
