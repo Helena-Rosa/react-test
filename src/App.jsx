@@ -2,7 +2,7 @@ import Alunos from './components/Alunos/Alunos';
 import Button from './components/Button/Button';
 import Card from './components/Card/Card';
 import MsgUsuario from './components/MensagemUsuario/MsgUsuario';
-import UseStateHook from './components/UseStateHokk/UseStateHook';
+import UseEffectHook from './components/UseEffectHook/UseEffectHook';
 import Contador from './components/Contador/Contador';
 
 function App() {
@@ -43,8 +43,7 @@ function App() {
   <MsgUsuario autenticado = {true} nomeUsuario={'SENAI'}/>
  */}
 
- {/* <UseStateHook /> */}
- <Contador/>
+  <UseEffectHook /> 
  
 
   
