@@ -24,7 +24,9 @@ function UseEffectHook (){
     },[contador]);
 
 
-    console.log('Sempre ocorre, mas antes do UseEffact.')
+    useEffect(() => {
+        document.title = titulo + contador
+    }, [contador]);
 
 
 
