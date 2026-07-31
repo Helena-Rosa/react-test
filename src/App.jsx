@@ -3,7 +3,7 @@ import Button from './components/Button/Button';
 import Card from './components/Card/Card';
 import MsgUsuario from './components/MensagemUsuario/MsgUsuario';
 import UseEffectHook from './components/UseEffectHook/UseEffectHook';
-import Contador from './components/Contador/Contador';
+import ContadorAuto from './components/Contador/Contador';
 import Tema from './components/Tema/Tema';
 
 function App() {
@@ -46,10 +46,10 @@ function App() {
 
  
 
-  <Tema/>
- 
+{/* <ContadorAuto/> */}
 
-  
+<Tema/>
+
 
   </>
 

@@ -41,4 +41,5 @@
 .botoes {
   display: flex;
   gap: 1rem;
+  color: blue
 }

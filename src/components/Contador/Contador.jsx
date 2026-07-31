@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react"
 import styles from "./Contador.module.css"
+
 function ContadorAuto() {
+    const [contador, setContador] = useState(0);
+
     const [automatico, setAutomatico] = useState(false);
 
 useEffect(() => {
@@ -83,7 +86,7 @@ const alternarAutomatico = () =>{
     )
 }
 
-export default Contador
+export default ContadorAuto
 
 
 // estudar a logica do contador 
