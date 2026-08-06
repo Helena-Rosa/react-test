@@ -5,6 +5,7 @@ import MsgUsuario from './components/MensagemUsuario/MsgUsuario';
 import UseEffectHook from './components/UseEffectHook/UseEffectHook';
 import ContadorAuto from './components/Contador/Contador';
 import Tema from './components/Tema/Tema';
+import Consultas from './components/Consultas/Consultas';
 
 function App() {
   // const objeto = 
@@ -48,7 +49,9 @@ function App() {
 
 {/* <ContadorAuto/> */}
 
-<Tema/>
+{/* <Tema/> */}
+
+<Consultas/>
 
 
   </>
