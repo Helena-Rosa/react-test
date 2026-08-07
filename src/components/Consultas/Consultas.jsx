@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./Consultas.module.css"
-
+import Swal from "sweetalert2";
 
 
 function Botao () {
@@ -11,29 +11,95 @@ function Botao () {
 
      const [erro, setErro] = useState ("")
 
+     const AlertSucesso = () => {
+        Swal.fire({
+            title: "Os dados foram exibidos com Sucesso!",
+            icon: "success",
+            draggable: true
+    });}
+
+
+    const ErroURL = () =>{
+        Swal.fire({
+        icon: "error",
+        title: "Erro",
+        text: "URL inválida! Verifique o endereço novamente."
+        });
+    }
+
+
+     
+
+
+     const autenticacao = () => {
+        Swal.fire({
+            title: 'Erro 401!',
+            text: 'Usuário não autorizado.',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+        });
+    };
+
+     const alerta = () => {
+        Swal.fire({
+            title: 'Erro!',
+            text: 'O servidor está apresentando um problema interno',
+            icon: 'error',
+            confirmButtonText: 'continuar'
+        });
+    };
+
+
+    const internet = () => {
+        Swal.fire({
+            title: "Erro de internet",
+            text: "Não foi possivel conectar a servidor. Verifique sua internet.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "tentar novamente"
+        }).then((result) => {
+            if (result.isConfirmed) (
+                window.location.reload()
+            );
+        });
+
+    }
+
     async function BuscarUsuarios(){
         setCarregando(true)
         setErro("")
     
         try {
-                const resposta = await fetch('https://jsonplaceholder.typicode.com/users')
+                // const resposta = await fetch('https://jsonplaceholder.typicode.com/users')
+                const resposta = await fetch("https://httpbin.org/status/401")
+
                 console.log(resposta)
 
                 if (!resposta.ok) {
 
-                    if (resposta.status === 500) {
-                        throw new Error ("Erro 500: O banco de dados ou servidor falhou.")
-                    }
 
                     if (resposta.status === 401) {
-                        throw new Error("Erro 401: Usauário não autorizado.")
-                    }
+                    throw new Error(autenticacao());
+                }
 
-                    throw new Error (`Erro ${resposta.status}: URL não encontrada ou invalida.`);
+                    if (resposta.status === 500) {
+                    throw new Error(alerta());
+                }
+
+                    
+                    throw new Error(ErroURL())
+
+                   
                 }
 
 
-                const dados = await resposta.json()
+                const dados = await resposta.json()  
+                setUsuario (dados)
+                AlertSucesso()
+                
+                
                 console.log(dados)
                 
 
@@ -41,14 +107,17 @@ function Botao () {
             } catch (error){
             console.log(error.message)
 
-            if (error.message === "Failed to fetch" || !navigator.onLine) {
+            if (error.message === "Failed to fetch" || !navigator.onLine) { 
+                internet()
 
-                setErro("Não foi possivel conectar ao servidor. Verique sua internet.")
+
+            //     setErro("Não foi possivel conectar ao servidor. Verique sua internet.")
             
-            } else {
+            // } else {
 
-                setErro(error.message)
-            }
+            //     setErro(error.message)
+            // 
+}
 
         
         } finally {
@@ -60,10 +129,15 @@ function Botao () {
     return (
         <main className={styles.container}>
 
+            
             <h1 className={styles.titulo}>Consulta de API</h1>
 
             <section className={styles.card}>
-                <button>
+                <button className={styles.BuscarUsuarios}
+                onClick={BuscarUsuarios} 
+
+                disabled = {carregando}>
+                    {carregando ? "Consultando" : "Consultar"}
                 </button>
 
                 <h2>Usuários da JSON Placeholder </h2>
@@ -82,7 +156,7 @@ function Botao () {
                                 </p>
 
                                 <p>
-                                    <strong>Cidade:</strong> {usuario.adress.city}
+                                    <strong>Cidade:</strong> {usuario.address.city}
                                 </p>
                             </li>
                         ))}
