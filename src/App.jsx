@@ -1,11 +1,14 @@
-import Alunos from './components/Alunos/Alunos';
-import Button from './components/Button/Button';
-import Card from './components/Card/Card';
-import MsgUsuario from './components/MensagemUsuario/MsgUsuario';
-import UseEffectHook from './components/UseEffectHook/UseEffectHook';
-import ContadorAuto from './components/Contador/Contador';
-import Tema from './components/Tema/Tema';
-import Consultas from './components/Consultas/Consultas';
+// import Alunos from './components/Alunos/Alunos';
+// import Button from './components/Button/Button';
+// import Card from './components/Card/Card';
+// import MsgUsuario from './components/MensagemUsuario/MsgUsuario';
+// import UseEffectHook from './components/UseEffectHook/UseEffectHook';
+// import ContadorAuto from './components/Contador/Contador';
+// import Tema from './components/Tema/Tema';
+
+import Consulta from "./components/Produtos/Consulta";
+import Produto from "./components/Produtos/Produto"
+
 
 function App() {
   // const objeto = 
@@ -51,7 +54,10 @@ function App() {
 
 {/* <Tema/> */}
 
-<Consultas/>
+{/* <Consultas/> */}
+
+<Consulta/>
+<Produto produto = "notebook"/>
 
 
   </>
